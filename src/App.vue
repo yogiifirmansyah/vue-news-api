@@ -1,27 +1,52 @@
+<script>
+import { ref } from "vue";
+
+export default {
+  name: "App",
+  components: {},
+  setup() {
+    const search = ref("");
+
+    return { search };
+  },
+};
+</script>
+
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <h3 class="logo">US News</h3>
+    <div>
+      <router-link to="/">Home</router-link>
+      <router-link to="/business">Business</router-link>
+      <router-link to="/entertainment">Entertainment</router-link>
+      <router-link to="/general">General</router-link>
+      <router-link to="/health">Health</router-link>
+      <router-link to="/science">Science</router-link>
+      <router-link to="/sports">Sports</router-link>
+      <router-link to="/technology">Technology</router-link>
+    </div>
+    <input type="text" placeholder="Search keyword..." v-model="search" />
   </nav>
-  <router-view/>
+  <router-view :search="search" />
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  padding: 0;
+  margin: 0;
 }
 
 nav {
-  padding: 30px;
+  display: flex;
+  padding: 2rem;
+  justify-content: space-between;
 }
 
 nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
+  margin-right: 1rem;
 }
 
 nav a.router-link-exact-active {
